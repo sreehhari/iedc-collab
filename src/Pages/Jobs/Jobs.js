@@ -164,13 +164,15 @@ const Developers = () => {
             </h3>
            <div>{users && users.length === 0 ? <p style={{fontWeight:'600'}}>Refine your filters please ..</p> : null}</div> 
             <div className="job-details">
-              {users?.map((user, index) => {
+              {/* {users?.map((user, index) => {
                 return (
                   <div key={index} onClick={() => setSelectedDevelopers(user)}>
                     <JobsCard handleClick={handleClick} user={user} />
                   </div>
                 );
-              })}
+              })} */}
+
+              
             </div>
             <Pagination
               count={pages}

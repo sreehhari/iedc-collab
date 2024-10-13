@@ -802,6 +802,29 @@ export const getJobsOrg = async (orgId) => {
   // console.log(data);
   return data;
 };
+
+//getting all jobs
+export const getingAllJobsOrg = async (orgId) => {
+  const data = [];
+  await firebase
+    .firestore()
+    .collection("jobs")
+    // .where("id", "==", orgId)
+    // .doc()
+    // .isEqual()
+    .get()
+    .then((snapshot) => {
+      // console.log(snapshot);
+      if (snapshot.docs.length > 0) {
+        snapshot.docs.forEach((doc) => {
+          data.push(doc.data());
+        });
+      }
+    });
+  // console.log(data);
+  return data;
+};
+
 // const myjobs = await getJobsOrg()
 //handleSubmit in job modal
 

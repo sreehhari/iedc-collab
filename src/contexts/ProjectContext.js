@@ -295,6 +295,7 @@ export const ProjectProvider = ({ children }) => {
         setSkills,
         tags,
         setTags,
+        setAllJobs,
       }}
     >
       {children}
