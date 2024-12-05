@@ -213,12 +213,36 @@ export const ProjectProvider = ({ children }) => {
   useEffect(() => {
     getTagDetails();
   }, []);
-  useEffect(async () => {
-    if (profile?.role == "Organization") {
-      const myjobs = await getJobsOrg(profile?.id);
-      setMyJobs(myjobs);
-    }
+  // useEffect(async () => {
+  //   if (profile?.role == "Organization") {
+  //     const myjobs = await getJobsOrg(profile?.id);
+  //     setMyJobs(myjobs);
+  //   }
+  // }, [profile]);
+  useEffect(() => {
+    const fetchJobsForOrg = async () => {
+      if (profile?.role === "Organization") {
+        try {
+          const myjobs = await getJobsOrg(profile?.id);
+          setMyJobs(myjobs);
+        } catch (error) {
+          console.error("Error fetching jobs:", error);
+        }
+      }
+    };
+  
+    fetchJobsForOrg(); // Call the async function
   }, [profile]);
+  
+
+  useEffect(()=>{
+    const fetchAllJobs = async()=>{
+      const jobs = await getJobsOrg();
+      setMyJobs(jobs);
+    }
+    fetchAllJobs();
+
+  },[]);
   const fetchRequests = async () => {
     if (currentUser) {
       setLoading(true);

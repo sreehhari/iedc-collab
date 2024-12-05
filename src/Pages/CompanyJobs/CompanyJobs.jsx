@@ -19,8 +19,8 @@ const CompanyJobs = () => {
       {profile?.role &&
       profile?.role === "Organization" &&
       profile?.approved === true ? (
-        <MainLayout route={"My Jobs"}>
-          <div>CompanyJobs</div>
+        <MainLayout route={"All Jobs"}>
+          <div>All Jobs</div>
           {myJobs.map((value, index) => {
             const data = JSON.stringify(value);
             return (
